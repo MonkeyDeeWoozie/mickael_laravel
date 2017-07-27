@@ -1,10 +1,10 @@
-@extends('template')
+@extends('layouts.app')
 
-@section('titre')
+@section('title')
     Edit/user
 @endsection
 
-@section('contenu')
+@section('content')
 
     <div class="col-sm-offset-4 col-sm-4">
 
