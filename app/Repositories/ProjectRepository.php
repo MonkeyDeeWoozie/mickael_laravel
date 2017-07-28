@@ -16,7 +16,7 @@ class ProjectRepository extends ResourceRepository
     private function save(Project $project, Array $inputs)
     {
         $project->title = $inputs['title'];
-        $project->content = $inputs['content'];    
+        $project->content = $inputs['content'];
 
         $project->save();
     }
