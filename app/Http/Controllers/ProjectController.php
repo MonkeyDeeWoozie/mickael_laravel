@@ -84,7 +84,7 @@ class ProjectController extends Controller
     {
        // var_dump($request);
        // die();
-        $this->projectRepository->update($id, $request->all());
+        $this->projectRepository->update($id, $request->only('title', 'content'));
         return redirect('project')->withOk("Le projet " . $request->input('title') . " a été modifié.");
     }
 
