@@ -33,6 +33,7 @@ class UserController extends Controller
     {
         $this->setAdmin($request);
         $user = $this->userRepository->store($request->all());
+        
         return redirect('user')->withOk("L'utilisateur " . $user->name . " a été créé.");
     }
 
