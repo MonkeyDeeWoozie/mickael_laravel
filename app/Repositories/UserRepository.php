@@ -4,13 +4,20 @@ namespace App\Repositories;
 
 use App\User;
 
-class UserRepository extends ResourceRepository
+class UserRepository extends Resource2Repository
 {
     protected $user;
 
     public function __construct(User $user)
     {
-        $this->model = $user;
+        $this->user = $user;
+    }
+
+    public function getPaginate($n)
+    {
+        return $this->user
+        ->orderBy('id', 'asc')
+        ->paginate($n);
     }
 
     private function save(User $user, Array $inputs)

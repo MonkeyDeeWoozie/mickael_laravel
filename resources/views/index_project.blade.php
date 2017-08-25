@@ -5,6 +5,9 @@
 @endsection
 
 @section('content')
+
+    @if(Auth::check())
+
     <br>
     <div class="col-sm-offset-4 col-sm-4">
         @if(session()->has('ok'))
@@ -29,11 +32,22 @@
                         <tr>
                             <td>{!! $project->id !!}</td>
                             <td class="text-primary"><strong>{!! $project->title !!}</strong></td>
+                            <td>{!! $project->user_id !!}</td>
                             <td>{!! link_to_route('project.show', 'Voir', [$project->id], ['class' => 'btn btn-success btn-block']) !!}</td>
                             <td>{!! link_to_route('project.edit', 'Modifier', [$project->id], ['class' => 'btn btn-warning btn-block']) !!}</td>
+
+                        @foreach ($project->tags as $tag)
+                            <td>
+                                <ul>
+                                    <li>{!! $tag->tag !!}</li>
+                                </ul>
+                            </td>
+                        @endforeach
+
+
                             <td>
 
-                                {!! Form::open(['method' => 'DELETE', 'route' => ['project.destroy', $project->id]]) !!}
+                                {!! Form::open(['method' => 'delete', 'route' => ['project.destroy', $project->id]]) !!}
 
                                     {!! Form::submit('Supprimer', ['class' => 'btn btn-danger btn-block', 'onclick' => 'return confirm(\'Vraiment supprimer ce projet ?\')']) !!}
 
@@ -49,4 +63,7 @@
 
         {!! $links !!}
     </div>
+
+    @endif
+
 @endsection

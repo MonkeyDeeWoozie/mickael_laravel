@@ -2,23 +2,23 @@
 
 namespace App\Repositories;
 
-abstract class ResourceRepository
+abstract class Resource2Repository
 {
-    protected $project;
+    protected $user;
 
     public function getPaginate($n)
     {
-        return $this->project->paginate($n);
+        return $this->user->paginate($n);
     }
 
     public function store(Array $inputs)
     {
-        return $this->project->create($inputs);
+        return $this->user->create($inputs);
     }
 
     public function getById($id)
     {
-        return $this->project->findOrFail($id);
+        return $this->user->findOrFail($id);
     }
 
     public function update($id, Array $inputs)
